@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const TitleText = styled.Text`
   font-weight: bold;
-  font-size: 25;
+  font-size: 25px;
 `;
 
 export const SubTitleText = styled.Text`

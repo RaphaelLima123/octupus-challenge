@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
+import SearchScreen from './screens/SearchScreen';
 
 const Stack = createStackNavigator();
 const globalScreenOptions = {
@@ -16,6 +17,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalScreenOptions}>
         <Stack.Screen name="Meu plano" component={HomeScreen} />
+        <Stack.Screen name="Procurar" component={SearchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
