@@ -25,6 +25,7 @@
       "linebreak-style": ["error", "windows"],
       "prettier/prettier": "error",
       "no-use-before-define": ["error", { "variables": false }],
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "react/prop-types": ["error", { "ignore": ["navigation"] }]
     }
 }

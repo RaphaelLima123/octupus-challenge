@@ -1,6 +1,5 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Alert } from 'react-native';
 import {
   Button,
   ButtonText,
@@ -9,14 +8,14 @@ import {
   TitleText,
 } from './styles';
 
-const HomeScreen = () => (
+const HomeScreen = ({ navigation: { navigate } }) => (
   <Container>
     <StatusBar style={{ style: 'light' }} />
     <TitleText>Plano Atual</TitleText>
     <SubTitleText>
       Essas são as informações disponíveis para seu plano
     </SubTitleText>
-    <Button title="Change Page" onPress={() => Alert.alert('test')}>
+    <Button title="Change Page" onPress={() => navigate('Procurar')}>
       <ButtonText>Procurar</ButtonText>
     </Button>
   </Container>
