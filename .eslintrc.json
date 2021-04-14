@@ -24,6 +24,7 @@
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "linebreak-style": ["error", "windows"],
       "prettier/prettier": "error",
-      "no-use-before-define": ["error", { "variables": false }]
+      "no-use-before-define": ["error", { "variables": false }],
+      "import/prefer-default-export": "off"
     }
 }

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Container } from './styles';
 
 const HomeScreen = () => (
-  <View>
+  <Container>
     <StatusBar style={{ style: 'light' }} />
     <Text>This is HomeScreen</Text>
-  </View>
+  </Container>
 );
 
 export default HomeScreen;
