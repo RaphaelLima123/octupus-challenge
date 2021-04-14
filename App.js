@@ -15,7 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalScreenOptions}>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="Meu plano" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
