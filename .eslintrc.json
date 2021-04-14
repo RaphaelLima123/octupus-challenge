@@ -1,0 +1,29 @@
+{
+    "env": {
+        "es2021": true,
+        "react-native/react-native": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-native",
+        "prettier"
+    ],
+    "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "linebreak-style": ["error", "windows"],
+      "prettier/prettier": "error",
+      "no-use-before-define": ["error", { "variables": false }]
+    }
+}
