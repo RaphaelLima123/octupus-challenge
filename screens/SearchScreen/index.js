@@ -33,7 +33,7 @@ const SearchScreen = () => {
       />
       <LocationButton>
         <MaterialIcons name="gps-fixed" size={24} color="black" />
-        <TextLocation>Usar localização atual</TextLocation>
+        <TextLocation>{errorMsg}</TextLocation>
       </LocationButton>
     </Container>
   );
