@@ -50,7 +50,7 @@ const SearchScreen = ({ navigation: { navigate } }) => {
         <TextLocation>Usar localização atual</TextLocation>
       </LocationButton>
       <SearchView>
-        <SearchButton onPress={() => navigate('Planos')}>
+        <SearchButton onPress={() => navigate('Mapa')}>
           <TextButton>Buscar</TextButton>
         </SearchButton>
       </SearchView>

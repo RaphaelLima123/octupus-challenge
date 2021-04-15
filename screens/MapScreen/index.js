@@ -1,10 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { Container } from './styles';
+import { Container, Map } from './styles';
 
 const MapScreen = () => (
   <Container>
-    <Text>This is the Map screen</Text>
+    <Map
+      initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+      showsUserLocation
+      loadingEnabled
+    />
   </Container>
 );
 
