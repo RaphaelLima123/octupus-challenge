@@ -28,3 +28,24 @@ export const TextLocation = styled.Text`
   margin-left: 3%;
   font-size: 18px;
 `;
+
+export const SearchView = styled.View`
+  align-items: center;
+`;
+
+export const SearchButton = styled.TouchableOpacity`
+  width: 100px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  background-color: #2c6bed;
+  border-radius: 5px;
+`;
+
+export const TextButton = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Roboto;
+`;

@@ -2,10 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
-import { Container, InputAdress, LocationButton, TextLocation } from './styles';
+import {
+  Container,
+  InputAdress,
+  LocationButton,
+  TextLocation,
+  TextButton,
+  SearchButton,
+  SearchView,
+} from './styles';
 import { getOctupusPlnas } from '../../services/octupusApi';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation: { navigate } }) => {
   const [adress, setAdress] = useState('');
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -23,7 +31,6 @@ const SearchScreen = () => {
       const lon = locationPosition.coords.longitude;
 
       const plans = await getOctupusPlnas(lat, lon);
-      console.log('AQUI É AS POSIÇÕES', plans);
       setLocation(locationPosition);
     }
 
@@ -42,6 +49,11 @@ const SearchScreen = () => {
         <MaterialIcons name="gps-fixed" size={24} color="black" />
         <TextLocation>Usar localização atual</TextLocation>
       </LocationButton>
+      <SearchView>
+        <SearchButton onPress={() => navigate('Planos')}>
+          <TextButton>Buscar</TextButton>
+        </SearchButton>
+      </SearchView>
     </Container>
   );
 };
