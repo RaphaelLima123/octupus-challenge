@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 import { Container, InputAdress, LocationButton, TextLocation } from './styles';
+import { getOctupusPlnas } from '../../services/octupusApi';
 
 const SearchScreen = () => {
   const [adress, setAdress] = useState('');
@@ -16,7 +17,13 @@ const SearchScreen = () => {
         setErrorMsg('Permissão negada');
         return;
       }
+
       const locationPosition = await Location.getCurrentPositionAsync({});
+      const lat = locationPosition.coords.latitude;
+      const lon = locationPosition.coords.longitude;
+
+      const plans = await getOctupusPlnas(lat, lon);
+      console.log('AQUI É AS POSIÇÕES', plans);
       setLocation(locationPosition);
     }
 
