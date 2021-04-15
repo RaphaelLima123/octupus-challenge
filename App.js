@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import MapScreen from './screens/MapScreen';
+import PlansListScreen from './screens/PlansListScreen';
 
 const Stack = createStackNavigator();
 const globalScreenOptions = {
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Meu plano" component={HomeScreen} />
         <Stack.Screen name="Procurar" component={SearchScreen} />
         <Stack.Screen name="Mapa" component={MapScreen} />
+        <Stack.Screen name="Planos" component={PlansListScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
