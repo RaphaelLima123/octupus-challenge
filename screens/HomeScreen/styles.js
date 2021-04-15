@@ -8,18 +8,15 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const TitleText = styled.Text`
+  font-family: Roboto;
   font-weight: bold;
   font-size: 25px;
 `;
 
 export const SubTitleText = styled.Text`
+  font-family: Roboto;
   font-size: 18px;
   margin-top: 5%;
-`;
-
-export const ButtonText = styled.Text`
-  font-weight: bold;
-  font-size: 18px;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -30,4 +27,11 @@ export const Button = styled.TouchableOpacity`
   height: 20%;
   background-color: #2c6bed;
   border-radius: 5px;
+`;
+
+export const ButtonText = styled.Text`
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
 `;
