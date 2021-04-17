@@ -3,9 +3,9 @@ import { Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
+import Search from '../../components/Search';
 import {
   Container,
-  InputAdress,
   LocationButton,
   TextLocation,
   TextButton,
@@ -14,7 +14,6 @@ import {
 } from './styles';
 
 const SearchScreen = ({ navigation: { navigate } }) => {
-  const [adress, setAdress] = useState('');
   const [location, setLocation] = useState(null);
   const [permission, setPermission] = useState(false);
 
@@ -31,6 +30,8 @@ const SearchScreen = ({ navigation: { navigate } }) => {
     if (!permission) {
       Alert.alert('É necessário permitir o uso da localização');
       await getPermission();
+    } else {
+      navigate('Planos', location);
     }
   };
 
@@ -45,11 +46,7 @@ const SearchScreen = ({ navigation: { navigate } }) => {
   return (
     <Container>
       <StatusBar style={{ style: 'light' }} />
-      <InputAdress
-        onChangeText={() => setAdress()}
-        value={adress}
-        placeholder="Onde você esta?"
-      />
+      <Search />
       <LocationButton onPress={getGpsAdress}>
         <MaterialIcons name="gps-fixed" size={24} color="black" />
         <TextLocation>Usar localização atual</TextLocation>
