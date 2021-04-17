@@ -3,12 +3,13 @@ import { Platform } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { Container } from './styles';
 
-const Search = (setLocation) => (
+const Search = ({ setAdressLocation }) => (
   <Container>
     <GooglePlacesAutocomplete
       placeholder="Onde você esta?"
       onPress={(data, details) => {
-        setLocation(data, details.geometry.location);
+        console.log('AQUI É O LOCATION', details.geometry.location);
+        setAdressLocation(data, details.geometry.location);
       }}
       query={{
         key: 'AIzaSyAwHwZ9iRJa7O5jKMBYAzwuxFG2gpjlOmk',

@@ -14,15 +14,17 @@ import {
 } from './styles';
 
 const SearchScreen = ({ navigation: { navigate } }) => {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({});
+  const [adressLocation, setAdressLocation] = useState(null);
   const [permission, setPermission] = useState(false);
 
   const getPermission = async () => {
     const { status } = await Location.requestPermissionsAsync();
     if (status === 'granted') {
       const locationPosition = await Location.getCurrentPositionAsync({});
+      const position = locationPosition.coords;
       setPermission(true);
-      setLocation(locationPosition);
+      setLocation(position);
     }
   };
 
@@ -32,6 +34,14 @@ const SearchScreen = ({ navigation: { navigate } }) => {
       await getPermission();
     } else {
       navigate('Planos', location);
+    }
+  };
+
+  const useAdressLocation = () => {
+    if (!adressLocation) {
+      Alert.alert('Você precisa inserir uma localização');
+    } else {
+      navigate('Planos', adressLocation);
     }
   };
 
@@ -46,13 +56,18 @@ const SearchScreen = ({ navigation: { navigate } }) => {
   return (
     <Container>
       <StatusBar style={{ style: 'light' }} />
-      <Search setLocation={{ setLocation }} />
+      <Search
+        setLocation={(result) => {
+          setAdressLocation(result);
+          console.log('Esse é o meu adressLocation', result);
+        }}
+      />
       <LocationButton onPress={getGpsAdress}>
         <MaterialIcons name="gps-fixed" size={24} color="black" />
         <TextLocation>Usar localização atual</TextLocation>
       </LocationButton>
       <SearchView>
-        <SearchButton onPress={() => console.log('LOCATION AQUI', location)}>
+        <SearchButton onPress={() => useAdressLocation()}>
           <TextButton>Buscar</TextButton>
         </SearchButton>
       </SearchView>
