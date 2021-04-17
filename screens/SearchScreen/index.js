@@ -46,13 +46,13 @@ const SearchScreen = ({ navigation: { navigate } }) => {
   return (
     <Container>
       <StatusBar style={{ style: 'light' }} />
-      <Search />
+      <Search setLocation={{ setLocation }} />
       <LocationButton onPress={getGpsAdress}>
         <MaterialIcons name="gps-fixed" size={24} color="black" />
         <TextLocation>Usar localização atual</TextLocation>
       </LocationButton>
       <SearchView>
-        <SearchButton onPress={() => navigate('Planos', location)}>
+        <SearchButton onPress={() => console.log('LOCATION AQUI', location)}>
           <TextButton>Buscar</TextButton>
         </SearchButton>
       </SearchView>
