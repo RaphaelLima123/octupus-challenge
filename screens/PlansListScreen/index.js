@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import { Container, ItemView, TitleText } from './styles';
 import { getOctupusPlnas } from '../../services/octupusApi';
 
@@ -8,19 +8,28 @@ const PlansListScreen = ({ route, navigation: { navigate } }) => {
 
   useEffect(() => {
     const getApiOctupus = async () => {
-      const location = route.params.coords;
-      const data = await getOctupusPlnas(location);
-      const array = data.list;
-
-      console.log('NOSSO ARRAY', array);
-      setPlans(array);
+      if (route.params) {
+        const location = route.params;
+        const data = await getOctupusPlnas(location);
+        const array = data.list;
+        setPlans(array);
+      } else {
+        const location = route.params.adressLocation;
+        const newObject = {
+          latitude: location.lat,
+          longitude: location.lng,
+        };
+        const data = await getOctupusPlnas(newObject);
+        const array = data.list;
+        setPlans(array);
+      }
     };
 
     getApiOctupus();
   }, []);
 
   const ViewPlan = ({ name, coords }) => (
-    <ItemView onPress={() => navigate('Mapa', coords)}>
+    <ItemView onPress={() => navigate('Mapa', { coords, plans })}>
       <TitleText>{name}</TitleText>
     </ItemView>
   );
