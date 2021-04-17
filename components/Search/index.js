@@ -8,8 +8,7 @@ const Search = ({ setAdressLocation }) => (
     <GooglePlacesAutocomplete
       placeholder="Onde você esta?"
       onPress={(data, details) => {
-        console.log('AQUI É O LOCATION', details.geometry.location);
-        setAdressLocation(data, details.geometry.location);
+        setAdressLocation(details.geometry.location);
       }}
       query={{
         key: 'AIzaSyAwHwZ9iRJa7O5jKMBYAzwuxFG2gpjlOmk',

@@ -41,7 +41,11 @@ const SearchScreen = ({ navigation: { navigate } }) => {
     if (!adressLocation) {
       Alert.alert('Você precisa inserir uma localização');
     } else {
-      navigate('Planos', adressLocation);
+      const coordenates = {
+        latitude: adressLocation.lat,
+        longitude: adressLocation.lng,
+      };
+      navigate('Planos', coordenates);
     }
   };
 
@@ -56,12 +60,7 @@ const SearchScreen = ({ navigation: { navigate } }) => {
   return (
     <Container>
       <StatusBar style={{ style: 'light' }} />
-      <Search
-        setLocation={(result) => {
-          setAdressLocation(result);
-          console.log('Esse é o meu adressLocation', result);
-        }}
-      />
+      <Search setAdressLocation={setAdressLocation} />
       <LocationButton onPress={getGpsAdress}>
         <MaterialIcons name="gps-fixed" size={24} color="black" />
         <TextLocation>Usar localização atual</TextLocation>

@@ -8,21 +8,10 @@ const PlansListScreen = ({ route, navigation: { navigate } }) => {
 
   useEffect(() => {
     const getApiOctupus = async () => {
-      if (route.params) {
-        const location = route.params;
-        const data = await getOctupusPlnas(location);
-        const array = data.list;
-        setPlans(array);
-      } else {
-        const location = route.params.adressLocation;
-        const newObject = {
-          latitude: location.lat,
-          longitude: location.lng,
-        };
-        const data = await getOctupusPlnas(newObject);
-        const array = data.list;
-        setPlans(array);
-      }
+      const location = route.params;
+      const data = await getOctupusPlnas(location);
+      const array = data.list;
+      setPlans(array);
     };
 
     getApiOctupus();
