@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
@@ -11,27 +12,31 @@ import {
   SearchButton,
   SearchView,
 } from './styles';
-import { getOctupusPlnas } from '../../services/octupusApi';
 
 const SearchScreen = ({ navigation: { navigate } }) => {
   const [adress, setAdress] = useState('');
   const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [permission, setPermission] = useState(false);
+
+  const getPermission = async () => {
+    const { status } = await Location.requestPermissionsAsync();
+    if (status === 'granted') {
+      const locationPosition = await Location.getCurrentPositionAsync({});
+      setPermission(true);
+      setLocation(locationPosition);
+    }
+  };
+
+  const getGpsAdress = async () => {
+    if (!permission) {
+      Alert.alert('É necessário permitir o uso da localização');
+      await getPermission();
+    }
+  };
 
   useEffect(() => {
     async function getDeviceLocation() {
-      const { status } = await Location.requestPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permissão negada');
-        return;
-      }
-
-      const locationPosition = await Location.getCurrentPositionAsync({});
-      const lat = locationPosition.coords.latitude;
-      const lon = locationPosition.coords.longitude;
-
-      const plans = await getOctupusPlnas(lat, lon);
-      setLocation(locationPosition);
+      await getPermission();
     }
 
     getDeviceLocation();
@@ -45,12 +50,12 @@ const SearchScreen = ({ navigation: { navigate } }) => {
         value={adress}
         placeholder="Onde você esta?"
       />
-      <LocationButton>
+      <LocationButton onPress={getGpsAdress}>
         <MaterialIcons name="gps-fixed" size={24} color="black" />
         <TextLocation>Usar localização atual</TextLocation>
       </LocationButton>
       <SearchView>
-        <SearchButton onPress={() => navigate('Mapa')}>
+        <SearchButton onPress={() => navigate('Planos', location)}>
           <TextButton>Buscar</TextButton>
         </SearchButton>
       </SearchView>
