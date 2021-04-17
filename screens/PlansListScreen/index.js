@@ -11,15 +11,16 @@ const PlansListScreen = ({ route, navigation: { navigate } }) => {
       const location = route.params.coords;
       const data = await getOctupusPlnas(location);
       const array = data.list;
-      console.log('ESTE É O NOSSO ARRAY', array);
+
+      console.log('NOSSO ARRAY', array);
       setPlans(array);
     };
 
     getApiOctupus();
   }, []);
 
-  const ViewPlan = ({ name }) => (
-    <ItemView onPress={() => navigate('Mapa')}>
+  const ViewPlan = ({ name, coords }) => (
+    <ItemView onPress={() => navigate('Mapa', coords)}>
       <TitleText>{name}</TitleText>
     </ItemView>
   );
@@ -28,7 +29,9 @@ const PlansListScreen = ({ route, navigation: { navigate } }) => {
     <Container>
       <FlatList
         data={plans}
-        renderItem={({ item }) => <ViewPlan name={item.name} />}
+        renderItem={({ item }) => (
+          <ViewPlan name={item.name} coords={item.coords} />
+        )}
         keyExtractor={(item, index) => index.toString()}
         showsVerticalScrollIndicator={false}
       />
