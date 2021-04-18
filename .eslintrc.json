@@ -26,6 +26,11 @@
       "prettier/prettier": "error",
       "no-use-before-define": ["error", { "variables": false }],
       "import/prefer-default-export": "off",
-      "react/prop-types": ["error", { "ignore": ["navigation", "route"] }]
+      "react/prop-types": "off"
+    },
+    "settings": {
+      "import/core-modules": [
+        "@expo/vector-icons"
+      ]
     }
 }
