@@ -20,5 +20,3 @@ export const TitleText = styled.Text`
   font-size: 20px;
   color: #fff;
 `;
-
-export const ItemsText = styled.Text``;
