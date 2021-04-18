@@ -5,5 +5,6 @@ export const getOctupusPlnas = async (location) => {
   const lon = location.longitude;
   const data = await fetch(`${urlBase}lat=${lat}&lon=${lon}`);
   const json = data.json();
+
   return json;
 };
