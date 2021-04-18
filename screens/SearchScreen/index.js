@@ -29,9 +29,9 @@ const SearchScreen = ({ navigation: { navigate } }) => {
   };
 
   const getGpsAdress = async () => {
+    await getPermission();
     if (!permission) {
       Alert.alert('É necessário permitir o uso da localização');
-      await getPermission();
     } else {
       navigate('Planos', location);
     }
