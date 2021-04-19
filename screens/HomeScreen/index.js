@@ -11,9 +11,9 @@ import {
 const HomeScreen = ({ navigation: { navigate } }) => (
   <Container>
     <StatusBar style={{ style: 'light' }} />
-    <TitleText>Plano Atual</TitleText>
+    <TitleText>Procure por um plano!</TitleText>
     <SubTitleText>
-      Essas são as informações disponíveis para seu plano
+      Aqui você acha os melhores planos para sua região!
     </SubTitleText>
     <Button title="Change Page" onPress={() => navigate('Procurar')}>
       <ButtonText>Procurar</ButtonText>

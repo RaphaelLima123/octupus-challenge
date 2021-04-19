@@ -4,7 +4,7 @@ import getDistance from 'geolib/es/getDistance';
 import convertDistance from 'geolib/es/convertDistance';
 import { Container, ItemView, TitleText } from './styles';
 import { getOctupusPlnas } from '../../services/octupusApi';
-import { getPackages } from '../../services/packagesTypes';
+import { getPackages } from '../../services/getPackages';
 
 const PlansListScreen = ({ route, navigation: { navigate } }) => {
   const [plans, setPlans] = useState([]);
@@ -17,7 +17,7 @@ const PlansListScreen = ({ route, navigation: { navigate } }) => {
 
       const planDetails = [];
 
-      array.map((plan) => {
+      array.forEach((plan) => {
         const distance = convertDistance(
           getDistance(
             {

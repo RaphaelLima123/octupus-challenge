@@ -5,10 +5,6 @@ export const Container = styled.SafeAreaView`
   margin: 10px;
 `;
 
-export const Test = styled.SafeAreaView`
-  flex: 1;
-`;
-
 export const LocationButton = styled.TouchableOpacity`
   flex-direction: row;
   height: 40px;
